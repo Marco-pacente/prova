@@ -1,0 +1,16 @@
+services:
+  #questo servizio può ora essere raggiunto con il nome 'server' (guarda js client)
+  server:
+    build:
+      context: ./server
+    container_name: zmq-server
+    ports:
+      #associa porta_computer:porta_container
+      - "3000:3000"
+
+  client:
+    build:
+      context: ./client
+    container_name: zmq-client
+    depends_on:
+      - server
